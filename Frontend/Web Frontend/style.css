@@ -1,0 +1,39 @@
+a {
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.box {
+    max-width: 1420px;
+    margin: 0px auto;
+}
+
+#mainContent #header {
+    background: #FAFAFA;
+    box-shadow: 0px 3px 3px black;
+    font-size: 36px;
+}
+#mainContent #header .navbar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#mainContent #content {
+    padding: 20px 20px;
+    margin-top: 3px;
+    min-height: 400px;
+}
+#mainContent #content #tableHeader .h-td {
+    font-weight: bold;
+}
+
+#mainContent #footer {
+    text-align: center;
+    background: grey;
+    color: lightgrey;
+    text-shadow: 0px 1px 1px black;
+    padding: 20px 0px;
+}

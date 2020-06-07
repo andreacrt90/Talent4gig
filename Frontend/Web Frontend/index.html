@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Talent4gig Project</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="lib/jquery-3.4.1.min.js"></script>
+    <script src="lib/popper.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="mainContent">
+
+        <!-- Header -->
+        <div id="header">
+            <div class="box">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="#">
+                        Talent4gig Project
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div id="content">
+            <div class="box" id="table">
+                <h3>Process list</h3>
+                <div class="row" id="tableHeader">
+                    <div class="col h-td">ID</div>
+                    <div class="col h-td">Name</div>
+                    <div class="col h-td">Description</div>
+                    <div class="col h-td">Periodicity</div>
+                    <div class="col h-td">ExecutionDate</div>
+                    <div class="col h-td">FinalState</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template for table -->
+        <template id="tableTemplate">
+            <div class="row process-tr">
+                <div class="col table-id"></div>
+                <div class="col table-name"></div>
+                <div class="col table-desc"></div>
+                <div class="col table-period"></div>
+                <div class="col table-exetime"></div>
+                <div class="col table-state"></div>
+            </div>
+        </template>
+
+        <!-- Footer -->
+        <div id="footer">
+            <div class="box">
+                Talent4gig Project
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // run on page loaded
+        $(document).ready(function () {
+            var api_url = 'http://localhost:8080/processes';
+
+            // Ajax call to get processes data
+            $.ajax({
+                url: api_url,
+                type: "GET",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function (result) {
+                    if (result.data) {
+                        // loop all processes
+                        result.data.array.forEach(element => {
+                            let content = $('#tableTemplate').html();
+                            $("#table").append(content);
+                            let $processTr = $("#table").last(".process-tr");
+
+                            // fill row with process data
+                            $processTr.find("table-id").text(element.id);
+                            $processTr.find("table-name").text(element.name);
+                            $processTr.find("table-desc").text(element.description);
+                            $processTr.find("table-period").text(element.periodicity);
+                            $processTr.find("table-exetime").text(element.executionDate);
+                            $processTr.find("table-state").text(element.finalState);
+                        });
+                    }
+                }
+            })
+        });
+    </script>
+
+</body>
+
+</html>
