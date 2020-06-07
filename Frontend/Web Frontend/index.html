@@ -96,7 +96,7 @@
                         result.data.forEach(element => {
                             let content = $('#tableTemplate').html();
                             $("#table").append(content);
-                            let $processTr = $("#table").last(".process-tr");
+                            let $processTr = $("#table").find(".process-tr").last();
 
                             // fill row with process data
                             $processTr.find(".table-id").text(element.id);
