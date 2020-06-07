@@ -93,18 +93,18 @@
                 success: function (result) {
                     if (result.data) {
                         // loop all processes
-                        result.data.array.forEach(element => {
+                        result.data.forEach(element => {
                             let content = $('#tableTemplate').html();
                             $("#table").append(content);
                             let $processTr = $("#table").last(".process-tr");
 
                             // fill row with process data
-                            $processTr.find("table-id").text(element.id);
-                            $processTr.find("table-name").text(element.name);
-                            $processTr.find("table-desc").text(element.description);
-                            $processTr.find("table-period").text(element.periodicity);
-                            $processTr.find("table-exetime").text(element.executionDate);
-                            $processTr.find("table-state").text(element.finalState);
+                            $processTr.find(".table-id").text(element.id);
+                            $processTr.find(".table-name").text(element.name);
+                            $processTr.find(".table-desc").text(element.description);
+                            $processTr.find(".table-period").text(element.periodicity);
+                            $processTr.find(".table-exetime").text(element.executionDate);
+                            $processTr.find(".table-state").text(element.finalState);
                         });
                     }
                 }

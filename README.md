@@ -35,3 +35,8 @@ Open the Frontend folder and run the C# file desktopApplication.cs:
 - Web: 
 
 Open the Web Frontend folder and open index.html file with any browser.
+
+WARNING:
+Browser Chrome does not support localhost for CORS requests, so to run correctly index.html Chrome must be launche d from command line with the following instruction (after moving in chrome.exe file directory):
+
+chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
